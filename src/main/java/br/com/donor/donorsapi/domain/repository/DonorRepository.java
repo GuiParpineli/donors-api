@@ -18,4 +18,6 @@ public interface DonorRepository {
     List<Donor> getAllFitDonors();
 
     List<AgeImc> getAllDonorImcByAge();
+
+    List<Donor> findByState(String state);
 }

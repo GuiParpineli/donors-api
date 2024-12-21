@@ -21,7 +21,7 @@ public interface JpaDonorRepository extends JpaRepository<DonorEntity, Integer> 
                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) BETWEEN 31 AND 40 THEN '31-40'
                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) BETWEEN 41 AND 50 THEN '41-50'
                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) BETWEEN 51 AND 60 THEN '51-60'
-                ELSE '60+'
+                ELSE '61+'
             END AS ageRange,
             AVG(weight / POWER(height, 2)) AS averageImc
         FROM donors

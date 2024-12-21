@@ -49,4 +49,9 @@ public class DonorRepositoryImpl implements DonorRepository {
     public List<AgeImc> getAllDonorImcByAge() {
         return jpaDonorRepository.calculateAverageImcByAgeRange().stream().map(DonorImcMapper::toData).toList();
     }
+
+    @Override
+    public List<Donor> findByState(String state) {
+        return jpaDonorRepository.findByState(state).stream().map(DonorMapper::toDomain).toList();
+    }
 }

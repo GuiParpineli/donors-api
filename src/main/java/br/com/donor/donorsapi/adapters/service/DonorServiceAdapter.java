@@ -11,4 +11,6 @@ public interface DonorServiceAdapter {
     List<Donor> findAll();
 
     List<AgeImcData> findAllAgeAndImc();
+
+    List<Donor> findByState(String state);
 }

@@ -28,4 +28,9 @@ public class DonorServiceImpl implements DonorService {
     public List<AgeImcData> getIMCByAges() {
         return donorRepository.getAllDonorImcByAge().stream().map(DonorImcMapper::toData).toList();
     }
+
+    @Override
+    public List<Donor> findByState(String state) {
+        return donorRepository.findByState(state);
+    }
 }

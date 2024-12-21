@@ -11,4 +11,6 @@ public interface DonorService {
     List<Donor> findAll();
 
     List<AgeImcData> getIMCByAges();
+
+    List<Donor> findByState(String state);
 }

@@ -3,6 +3,7 @@ package br.com.donor.donorsapi.adapters.persistence;
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
+import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;
 
 public class DonorMapper {
 
@@ -55,7 +56,7 @@ public class DonorMapper {
         );
     }
 
-    public static Donor toDomain(DonorDto dto) {
+    public static Donor toDomain(DonorInputDto dto) {
         return new Donor(
                 dto.name(),
                 dto.cpf(),
@@ -76,6 +77,20 @@ public class DonorMapper {
                 dto.height(),
                 dto.weight(),
                 dto.bloodType()
+        );
+    }
+
+    public static DonorDto toDto(Donor donor) {
+        return new DonorDto(
+                donor.name(),
+                donor.birthDate(),
+                donor.gender(),
+                donor.number(),
+                donor.city(),
+                donor.state(),
+                donor.height(),
+                donor.weight(),
+                donor.bloodType()
         );
     }
 }

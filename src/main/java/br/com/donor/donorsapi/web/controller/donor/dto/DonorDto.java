@@ -1,19 +1,23 @@
 package br.com.donor.donorsapi.web.controller.donor.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
+import jakarta.validation.constraints.NotNull;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * DTO for {@link DonorEntity}
+ */
 public record DonorDto(
-        @JsonProperty("nome") String name, @JsonProperty("cpf") String cpf, @JsonProperty("rg") String rg,
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy") @JsonProperty("data_nasc") LocalDate birthDate,
-        @JsonProperty("sexo") String gender, @JsonProperty("mae") String motherName,
-        @JsonProperty("pai") String fatherName, @JsonProperty("email") String email,
-        @JsonProperty("cep") String zipCode, @JsonProperty("endereco") String address,
-        @JsonProperty("numero") Integer number, @JsonProperty("bairro") String district,
-        @JsonProperty("cidade") String city, @JsonProperty("estado") String state,
-        @JsonProperty("telefone_fixo") String landline, @JsonProperty("celular") String mobile,
-        @JsonProperty("altura") Double height, @JsonProperty("peso") Integer weight,
-        @JsonProperty("tipo_sanguineo") String bloodType) {
+        String name,
+        LocalDate birthDate,
+        String gender,
+        @NotNull Integer number,
+        String city,
+        String state,
+        Double height,
+        Integer weight,
+        String bloodType
+) implements Serializable {
 }
