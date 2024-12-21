@@ -40,10 +40,6 @@ public class DonorRepositoryImpl implements DonorRepository {
         return jpaDonorRepository.findByState(state).stream().map(DonorMapper::toDomain).toList();
     }
 
-    @Override
-    public List<Donor> getAllFitDonors() {
-        return List.of();
-    }
 
     @Override
     public List<AgeImc> getAllDonorImcByAge() {

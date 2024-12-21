@@ -1,9 +1,12 @@
 package br.com.donor.donorsapi.adapters.persistence;
 
+import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
 import br.com.donor.donorsapi.domain.model.Donor;
+import br.com.donor.donorsapi.domain.model.Gender;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;
+import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
 
 public class DonorMapper {
 
@@ -13,7 +16,7 @@ public class DonorMapper {
                 entity.getCpf(),
                 entity.getRg(),
                 entity.getBirthDate(),
-                entity.getGender(),
+                Gender.of(entity.getGender()),
                 entity.getMotherName(),
                 entity.getFatherName(),
                 entity.getEmail(),
@@ -38,7 +41,7 @@ public class DonorMapper {
                 donor.cpf(),
                 donor.rg(),
                 donor.birthDate(),
-                donor.gender(),
+                donor.gender().getGender(),
                 donor.motherName(),
                 donor.fatherName(),
                 donor.email(),
@@ -62,7 +65,7 @@ public class DonorMapper {
                 dto.cpf(),
                 dto.rg(),
                 dto.birthDate(),
-                dto.gender(),
+                Gender.of(dto.gender()),
                 dto.motherName(),
                 dto.fatherName(),
                 dto.email(),
@@ -84,13 +87,21 @@ public class DonorMapper {
         return new DonorDto(
                 donor.name(),
                 donor.birthDate(),
-                donor.gender(),
+                donor.gender().getGender(),
                 donor.number(),
                 donor.city(),
                 donor.state(),
                 donor.height(),
                 donor.weight(),
                 donor.bloodType()
+        );
+    }
+
+    public static DonorOverweightDto toOverweightDto(DonorOverWeight dto) {
+        return new DonorOverweightDto(
+                dto.getSexo(),
+                dto.getTotal(),
+                dto.getPorcent() + "%"
         );
     }
 }

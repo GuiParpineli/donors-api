@@ -1,5 +1,6 @@
 package br.com.donor.donorsapi.adapters.service;
 
+import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
 import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 import br.com.donor.donorsapi.domain.model.Donor;
 
@@ -13,4 +14,6 @@ public interface DonorServiceAdapter {
     List<AgeImcData> findAllAgeAndImc();
 
     List<Donor> findByState(String state);
+
+    List<DonorOverWeight> findOverWeight();
 }

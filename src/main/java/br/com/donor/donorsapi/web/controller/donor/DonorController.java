@@ -1,11 +1,13 @@
 package br.com.donor.donorsapi.web.controller.donor;
 
+import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
 import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
 import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 import br.com.donor.donorsapi.adapters.service.DonorServiceAdapter;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;
+import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
 import lombok.val;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +45,11 @@ public class DonorController {
     public ResponseEntity<List<DonorDto>> getByState(@RequestParam String state) {
         List<Donor> byState = donorService.findByState(state);
         return ResponseEntity.ok(byState.stream().map(DonorMapper::toDto).toList());
+    }
+
+    @GetMapping("/overweight")
+    public ResponseEntity<List<DonorOverweightDto>> getOverweight() {
+        List<DonorOverWeight> overweight = donorService.findOverWeight();
+        return ResponseEntity.ok(overweight.stream().map(DonorMapper::toOverweightDto).toList());
     }
 }

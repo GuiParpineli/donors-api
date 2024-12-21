@@ -7,7 +7,7 @@ public record Donor(
         String cpf,
         String rg,
         LocalDate birthDate,
-        String gender,
+        Gender gender,
         String motherName,
         String fatherName,
         String email,
