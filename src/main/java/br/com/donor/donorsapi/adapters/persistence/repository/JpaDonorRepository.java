@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface JpaDonorRepository extends JpaRepository<DonorEntity, Integer> {
-    DonorEntity findByState(String state);
+    List<DonorEntity> findByState(String state);
 
     @Query(value = """
             SELECT 

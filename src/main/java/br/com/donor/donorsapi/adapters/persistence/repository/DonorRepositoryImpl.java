@@ -33,12 +33,12 @@ public class DonorRepositoryImpl implements DonorRepository {
 
     @Override
     public List<Donor> findAll() {
-        return List.of();
+        return jpaDonorRepository.findAll().stream().map(DonorMapper::toDomain).toList();
     }
 
     @Override
     public List<Donor> donorByState(String state) {
-        return List.of();
+        return jpaDonorRepository.findByState(state).stream().map(DonorMapper::toDomain).toList();
     }
 
     @Override
