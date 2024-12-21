@@ -4,13 +4,12 @@ import br.com.donor.donorsapi.adapters.persistence.DonorImcMapper;
 import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
 import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.domain.model.DonorImc;
+import br.com.donor.donorsapi.domain.model.AgeImc;
 import br.com.donor.donorsapi.domain.repository.DonorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class DonorRepositoryImpl implements DonorRepository {
@@ -47,7 +46,7 @@ public class DonorRepositoryImpl implements DonorRepository {
     }
 
     @Override
-    public List<DonorImc> getAllDonorImcByAge() {
-        return jpaDonorRepository.calculateAverageImcByAgeRange().stream().map(DonorImcMapper::toDomain).toList();
+    public List<AgeImc> getAllDonorImcByAge() {
+        return jpaDonorRepository.calculateAverageImcByAgeRange().stream().map(DonorImcMapper::toData).toList();
     }
 }

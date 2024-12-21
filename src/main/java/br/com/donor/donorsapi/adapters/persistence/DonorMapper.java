@@ -2,9 +2,7 @@ package br.com.donor.donorsapi.adapters.persistence;
 
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
 import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.web.controller.DonorDto;
-
-import java.util.List;
+import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
 
 public class DonorMapper {
 

@@ -1,7 +1,7 @@
 package br.com.donor.donorsapi.domain.repository;
 
 import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.domain.model.DonorImc;
+import br.com.donor.donorsapi.domain.model.AgeImc;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ public interface DonorRepository {
 
     List<Donor> getAllFitDonors();
 
-    List<DonorImc> getAllDonorImcByAge();
+    List<AgeImc> getAllDonorImcByAge();
 }

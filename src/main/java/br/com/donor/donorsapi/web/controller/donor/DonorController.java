@@ -1,9 +1,10 @@
-package br.com.donor.donorsapi.web.controller;
+package br.com.donor.donorsapi.web.controller.donor;
 
 import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
+import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 import br.com.donor.donorsapi.adapters.service.DonorServiceAdapter;
 import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.domain.service.DonorService;
+import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +29,10 @@ public class DonorController {
     @GetMapping("/all")
     public ResponseEntity<List<Donor>> getAll() {
         return ResponseEntity.ok(donorService.findAll());
+    }
+
+    @GetMapping("/imcByAge")
+    public ResponseEntity<List<AgeImcData>> getImcByAge() {
+        return ResponseEntity.ok(donorService.findAllAgeAndImc());
     }
 }

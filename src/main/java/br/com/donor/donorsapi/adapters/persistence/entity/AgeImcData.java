@@ -1,4 +1,4 @@
-package br.com.donor.donorsapi.adapters.persistence.entity.dto;
+package br.com.donor.donorsapi.adapters.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class DonorImcDto {
-    int ageRangeStart;
-    int ageRangeEnd;
+public class AgeImcData {
+    String ageRange;
     double averageImc;
 }

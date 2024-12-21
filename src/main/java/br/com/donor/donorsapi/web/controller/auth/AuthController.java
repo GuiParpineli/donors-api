@@ -1,6 +1,8 @@
 package br.com.donor.donorsapi.web.controller.auth;
 
 import br.com.donor.donorsapi.adapters.config.security.jwt.JwtUtil;
+import br.com.donor.donorsapi.web.controller.auth.dto.TokenDto;
+import br.com.donor.donorsapi.web.controller.auth.dto.UserDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

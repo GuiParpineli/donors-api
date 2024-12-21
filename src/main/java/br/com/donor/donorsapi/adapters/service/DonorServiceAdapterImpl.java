@@ -1,5 +1,6 @@
 package br.com.donor.donorsapi.adapters.service;
 
+import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 import br.com.donor.donorsapi.adapters.persistence.repository.DonorRepositoryImpl;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.service.DonorService;
@@ -24,5 +25,10 @@ public class DonorServiceAdapterImpl implements DonorServiceAdapter {
     @Override
     public List<Donor> findAll() {
         return donorService.findAll();
+    }
+
+    @Override
+    public List<AgeImcData> findAllAgeAndImc() {
+        return donorService.getIMCByAges();
     }
 }

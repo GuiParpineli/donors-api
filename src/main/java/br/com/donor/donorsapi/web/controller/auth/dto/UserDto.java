@@ -1,4 +1,4 @@
-package br.com.donor.donorsapi.web.controller.auth;
+package br.com.donor.donorsapi.web.controller.auth.dto;
 
 import br.com.donor.donorsapi.adapters.persistence.entity.UserEntity;
 import jakarta.validation.constraints.NotEmpty;
