@@ -1,5 +1,6 @@
 package br.com.donor.donorsapi.web.controller;
 
+import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
 import br.com.donor.donorsapi.adapters.service.DonorServiceAdapter;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.service.DonorService;
@@ -18,13 +19,14 @@ public class DonorController {
         this.donorService = donorService;
     }
 
-    @PostMapping(path = "save",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody List<Donor> donors) {
-        return ResponseEntity.ok(donorService.saveAll(donors));
+    @PostMapping(path = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> save(@RequestBody List<DonorDto> donors) {
+        List<Donor> inputs = donors.stream().map(DonorMapper::toDomain).toList();
+        return ResponseEntity.ok(donorService.saveAll(inputs));
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Donor>> getAll() {
-        return ResponseEntity.ok( donorService.findAll());
+        return ResponseEntity.ok(donorService.findAll());
     }
 }

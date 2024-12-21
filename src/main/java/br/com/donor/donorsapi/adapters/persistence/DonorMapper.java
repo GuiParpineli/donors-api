@@ -2,6 +2,9 @@ package br.com.donor.donorsapi.adapters.persistence;
 
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
 import br.com.donor.donorsapi.domain.model.Donor;
+import br.com.donor.donorsapi.web.controller.DonorDto;
+
+import java.util.List;
 
 public class DonorMapper {
 
@@ -51,6 +54,30 @@ public class DonorMapper {
                 donor.height(),
                 donor.weight(),
                 donor.bloodType()
+        );
+    }
+
+    public static Donor toDomain(DonorDto dto) {
+        return new Donor(
+                dto.name(),
+                dto.cpf(),
+                dto.rg(),
+                dto.birthDate(),
+                dto.gender(),
+                dto.motherName(),
+                dto.fatherName(),
+                dto.email(),
+                dto.zipCode(),
+                dto.address(),
+                dto.number(),
+                dto.district(),
+                dto.city(),
+                dto.state(),
+                dto.landline(),
+                dto.mobile(),
+                dto.height(),
+                dto.weight(),
+                dto.bloodType()
         );
     }
 }
