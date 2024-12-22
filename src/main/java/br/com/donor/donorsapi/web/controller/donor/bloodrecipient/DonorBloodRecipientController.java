@@ -23,7 +23,7 @@ public class DonorBloodRecipientController {
         this.donorService = donorService;
     }
 
-    @GetMapping("/donorsForBloodType")
+    @GetMapping("/blood-types/compatibility")
     @Operation(summary = "Buscar quantidade de possíveis doadores por tipo de sangue")
     public ResponseEntity<List<BloodTypeRecipientCountDto>> getPossibleDonors() {
         List<BloodTypeRecipientCount> donors = donorService.getDonorBloodType();
