@@ -13,11 +13,11 @@ public class DonorAdapterRecipientServiceImpl implements DonorAdapterRecipientSe
     private final DonorBloodRecipientService service;
 
     public DonorAdapterRecipientServiceImpl(DonorRepository repository) {
-        this.service = new DonorBloodRecipientServiceImpl( repository);
+        this.service = new DonorBloodRecipientServiceImpl(repository);
     }
 
     @Override
     public List<BloodTypeRecipientCount> getDonorBloodType() {
-        return List.of();
+        return service.getTotalReceivesByBloodType();
     }
 }

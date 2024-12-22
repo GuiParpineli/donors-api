@@ -5,10 +5,12 @@ import br.com.donor.donorsapi.domain.model.BloodTypeRecipientCount;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.repository.DonorRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DonorBloodRecipientServiceImpl implements DonorBloodRecipientService {
-
     private final DonorRepository donorRepository;
 
     public DonorBloodRecipientServiceImpl(DonorRepository donorRepository) {
@@ -18,7 +20,24 @@ public class DonorBloodRecipientServiceImpl implements DonorBloodRecipientServic
     @Override
     public List<BloodTypeRecipientCount> getTotalReceivesByBloodType() {
         List<Donor> donors = donorRepository.findAll();
-        return List.of();
+        Map<BloodType, Integer> recipientCounts = new HashMap<>();
+
+        for (BloodType bloodType : BloodType.values()) recipientCounts.put(bloodType, 0);
+
+        donors.stream().map(Donor::bloodType).forEach(donorBloodType -> {
+            for (BloodType recipientBloodType : BloodType.values()) {
+                if (canDonateTo(donorBloodType, recipientBloodType)) {
+                    recipientCounts.put(recipientBloodType, recipientCounts.get(recipientBloodType) + 1);
+                }
+            }
+        });
+
+        List<BloodTypeRecipientCount> bloodTypeCounts = new ArrayList<>();
+        for (Map.Entry<BloodType, Integer> entry : recipientCounts.entrySet()) {
+            bloodTypeCounts.add(new BloodTypeRecipientCount(entry.getKey(), entry.getValue()));
+        }
+
+        return bloodTypeCounts;
     }
 
     private boolean canDonateTo(BloodType donor, BloodType recipient) {
