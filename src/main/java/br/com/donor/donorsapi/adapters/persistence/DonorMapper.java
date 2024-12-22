@@ -2,11 +2,8 @@ package br.com.donor.donorsapi.adapters.persistence;
 
 import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
-import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.domain.model.Gender;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
+import br.com.donor.donorsapi.domain.model.*;
+import br.com.donor.donorsapi.web.controller.donor.dto.*;
 
 public class DonorMapper {
 
@@ -30,7 +27,7 @@ public class DonorMapper {
                 entity.getMobile(),
                 entity.getHeight(),
                 entity.getWeight(),
-                entity.getBloodType()
+                BloodType.of(entity.getBloodType())
         );
     }
 
@@ -55,7 +52,7 @@ public class DonorMapper {
                 donor.mobile(),
                 donor.height(),
                 donor.weight(),
-                donor.bloodType()
+                donor.bloodType().getDescription()
         );
     }
 
@@ -79,7 +76,7 @@ public class DonorMapper {
                 dto.mobile(),
                 dto.height(),
                 dto.weight(),
-                dto.bloodType()
+                BloodType.of(dto.bloodType())
         );
     }
 
@@ -93,7 +90,7 @@ public class DonorMapper {
                 donor.state(),
                 donor.height(),
                 donor.weight(),
-                donor.bloodType()
+                donor.bloodType().getDescription()
         );
     }
 
@@ -102,6 +99,20 @@ public class DonorMapper {
                 dto.getSexo(),
                 dto.getTotal(),
                 dto.getPorcent() + "%"
+        );
+    }
+
+    public static DonorYearAverageDto toYearAverageDto(DonorYearAverage donorYearAverage) {
+        return new DonorYearAverageDto(
+                donorYearAverage.bloodType(),
+                donorYearAverage.average()
+        );
+    }
+
+    public static BloodTypeRecipientCountDto toBloodType(BloodTypeRecipientCount bloodTypeRecipientCount) {
+        return new BloodTypeRecipientCountDto(
+                bloodTypeRecipientCount.bloodType().getDescription(),
+                bloodTypeRecipientCount.totalRecipient()
         );
     }
 }

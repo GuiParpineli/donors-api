@@ -21,6 +21,6 @@ public record Donor(
         String mobile,
         Double height,
         Integer weight,
-        String bloodType
+        BloodType bloodType
 ) {
 }

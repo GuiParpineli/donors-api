@@ -13,7 +13,7 @@ public enum Gender {
         for (Gender g : Gender.values()) {
             if (g.gender.equals(gender)) return g;
         }
-        return null;
+        throw new IllegalArgumentException("Tipo sanguíneo inválido: " + gender);
     }
 
     public String getGender() {

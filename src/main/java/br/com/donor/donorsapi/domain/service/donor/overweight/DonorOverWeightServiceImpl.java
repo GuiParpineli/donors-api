@@ -1,45 +1,22 @@
-package br.com.donor.donorsapi.domain.service;
+package br.com.donor.donorsapi.domain.service.donor.overweight;
 
 import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
-import br.com.donor.donorsapi.adapters.persistence.DonorImcMapper;
-import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.model.Gender;
 import br.com.donor.donorsapi.domain.repository.DonorRepository;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-public class DonorServiceImpl implements DonorService {
+public class DonorOverWeightServiceImpl implements DonorOverWeightService {
+
     private final DonorRepository donorRepository;
 
-    public DonorServiceImpl(DonorRepository donorRepository) {
+    public DonorOverWeightServiceImpl(DonorRepository donorRepository) {
         this.donorRepository = donorRepository;
     }
 
     @Override
-    public boolean saveAll(List<Donor> donor) {
-        return donorRepository.saveAll(donor).size() == donor.size();
-    }
-
-    @Override
-    public List<Donor> findAll() {
-        return donorRepository.findAll();
-    }
-
-    @Override
-    public List<AgeImcData> getIMCByAges() {
-        return donorRepository.getAllDonorImcByAge().stream().map(DonorImcMapper::toData).toList();
-    }
-
-    @Override
-    public List<Donor> findByState(String state) {
-        return donorRepository.findByState(state);
-    }
-
-    @Override
-    public List<DonorOverWeight> findOverWeights() {
+    public List<DonorOverWeight> getOverWeights() {
         List<Donor> fatDonors = donorRepository.findAll();
         return List.of(
                 calculateOverWeight(fatDonors, Gender.MALE),
@@ -56,14 +33,14 @@ public class DonorServiceImpl implements DonorService {
                 .filter(this::isOverWeight)
                 .count();
 
-        double porcent = overWeightTotal == 0
+        double percent = overWeightTotal == 0
                 ? 0
                 : (double) (filteredDonors.size() * overWeightTotal) / 100;
 
         return new DonorOverWeight(
                 gender.getGender(),
                 filteredDonors.size(),
-                porcent
+                percent
         );
     }
 

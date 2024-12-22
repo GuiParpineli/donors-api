@@ -1,5 +1,6 @@
 package br.com.donor.donorsapi.domain.repository;
 
+import br.com.donor.donorsapi.domain.model.BloodType;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.model.AgeImc;
 
@@ -18,4 +19,6 @@ public interface DonorRepository {
     List<AgeImc> getAllDonorImcByAge();
 
     List<Donor> findByState(String state);
+
+    List<Donor> findByBloodType(BloodType bloodType);
 }

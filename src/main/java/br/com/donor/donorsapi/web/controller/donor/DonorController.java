@@ -1,55 +1,20 @@
 package br.com.donor.donorsapi.web.controller.donor;
 
-import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
-import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
-import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
-import br.com.donor.donorsapi.adapters.service.DonorServiceAdapter;
-import br.com.donor.donorsapi.domain.model.Donor;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;
-import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
-import lombok.val;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
 @RestController
-@RequestMapping(path = "public/api/donor", produces = MediaType.APPLICATION_JSON_VALUE)
-public class DonorController {
-    private final DonorServiceAdapter donorService;
-
-    public DonorController(DonorServiceAdapter donorService) {
-        this.donorService = donorService;
-    }
-
-    @PostMapping(path = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody List<DonorInputDto> donors) {
-        List<Donor> inputs = donors.stream().map(DonorMapper::toDomain).toList();
-        return ResponseEntity.ok(donorService.saveAll(inputs));
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<DonorDto>> getAll() {
-        List<DonorDto> donors = donorService.findAll().stream().map(DonorMapper::toDto).toList();
-        return ResponseEntity.ok(donors);
-    }
-
-    @GetMapping("/imcByAge")
-    public ResponseEntity<List<AgeImcData>> getImcByAge() {
-        return ResponseEntity.ok(donorService.findAllAgeAndImc());
-    }
-
-    @GetMapping("/byState")
-    public ResponseEntity<List<DonorDto>> getByState(@RequestParam String state) {
-        List<Donor> byState = donorService.findByState(state);
-        return ResponseEntity.ok(byState.stream().map(DonorMapper::toDto).toList());
-    }
-
-    @GetMapping("/overweight")
-    public ResponseEntity<List<DonorOverweightDto>> getOverweight() {
-        List<DonorOverWeight> overweight = donorService.findOverWeight();
-        return ResponseEntity.ok(overweight.stream().map(DonorMapper::toOverweightDto).toList());
-    }
+@RequestMapping(
+    path = "public/api/donor",
+    produces = MediaType.APPLICATION_JSON_VALUE
+)
+public @interface DonorController {
 }

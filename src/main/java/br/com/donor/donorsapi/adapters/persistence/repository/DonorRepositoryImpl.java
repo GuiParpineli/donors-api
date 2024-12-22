@@ -3,6 +3,7 @@ package br.com.donor.donorsapi.adapters.persistence.repository;
 import br.com.donor.donorsapi.adapters.persistence.DonorImcMapper;
 import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
 import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
+import br.com.donor.donorsapi.domain.model.BloodType;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.model.AgeImc;
 import br.com.donor.donorsapi.domain.repository.DonorRepository;
@@ -49,5 +50,11 @@ public class DonorRepositoryImpl implements DonorRepository {
     @Override
     public List<Donor> findByState(String state) {
         return jpaDonorRepository.findByState(state).stream().map(DonorMapper::toDomain).toList();
+    }
+
+    @Override
+    public List<Donor> findByBloodType(BloodType bloodType) {
+        String description = bloodType.getDescription();
+        return jpaDonorRepository.findByBloodType(description).stream().map(DonorMapper::toDomain).toList();
     }
 }
