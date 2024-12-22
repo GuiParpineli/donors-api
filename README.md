@@ -55,103 +55,176 @@ das principais camadas:
 
 A API expõe os seguintes endpoints:
 
+---
+
+## Endpoints Disponíveis
+
+---
+
+## Endpoints Disponíveis
+
 ### 1. **Buscar Compatibilidade por Tipo Sanguíneo**
 
-- **URL:** `public/api/blood-types/compatibility`
+- **URL:** `/public/api/blood-types/compatibility`
 - **Método:** `GET`
-- **Descrição:** Retorna a lista com o total de doadores possíveis para cada tipo sanguíneo receptor.
+- **Descrição:** Retorna a quantidade de possíveis doadores por tipo de sangue.
 - **Exemplo de Resposta (JSON):**
+
   ```json
   [
-    { "bloodType": "O_NEGATIVE", "totalRecipient": 100 },
-    { "bloodType": "O_POSITIVE", "totalRecipient": 200 },
-    { "bloodType": "A_NEGATIVE", "totalRecipient": 80 },
-    { "bloodType": "A_POSITIVE", "totalRecipient": 120 }
+    { "bloodType": "O-", "totalRecipient": 100 },
+    { "bloodType": "O+", "totalRecipient": 200 },
+    { "bloodType": "A-", "totalRecipient": 80 },
+    { "bloodType": "A+", "totalRecipient": 120 }
   ]
   ```
+
+---
 
 ### 2. **Listar Todos os Doadores**
 
-- **URL:** `public/api/donor/all`
+- **URL:** `/public/api/donor/all`
 - **Método:** `GET`
-- **Descrição:** Retorna uma lista de todos os doadores cadastrados no sistema.
+- **Descrição:** Retorna todos os doadores registrados no sistema.
 - **Exemplo de Resposta (JSON):**
+
   ```json
   [
-       {
-         "name": "Milena Analu Pires",
-         "birthDate": [
-           1964,
-           5,
-           23
-         ],
-         "gender": "Feminino",
-         "number": 675,
-         "city": "Teófilo Otoni",
-         "state": "MG",
-         "height": 1.53,
-         "weight": 80,
-         "bloodType": "O-"
-       },
-       {
-         "name": "Marcos Vinicius Kevin Samuel Santos",
-         "birthDate": [
-           1992,
-           9,
-           7
-         ],
-         "gender": "Masculino",
-         "number": 634,
-         "city": "Aracaju",
-         "state": "SE",
-         "height": 1.92,
-         "weight": 95,
-         "bloodType": "O-"
-       }
+    {
+      "name": "Milena Analu Pires",
+      "birthDate": [1964, 5, 23],
+      "gender": "Feminino",
+      "number": 675,
+      "city": "Teófilo Otoni",
+      "state": "MG",
+      "height": 1.53,
+      "weight": 80,
+      "bloodType": "O-"
+    }
   ]
   ```
 
+---
+
 ### 3. **Cadastrar Novo Doador**
 
-- **URL:** `public/api/donor/save`
+- **URL:** `/public/api/donor/save`
 - **Método:** `POST`
 - **Descrição:** Cadastra um novo doador no sistema.
-    - **Body de Exemplo:**
-     ```json
-      [
-   
-        {	
-            "nome": "Milena Analu Pires",
-            "cpf": "775.256.099-50",
-            "rg": "44.084.541-5",
-            "data_nasc": "23\/05\/1964",
-            "sexo": "Feminino",
-            "mae": "Isadora Marli",
-            "pai": "Noah Severino César Pires",
-            "email": "mmilenaanalupires@keffin.com.br",
-            "cep": "39801-678",
-            "endereco": "Rua Kurt W. Rothe",
-            "numero": 675,
-            "bairro": "Castro Pires",
-            "cidade": "Teófilo Otoni",
-            "estado": "MG",
-            "telefone_fixo": "(33) 3611-4613",
-            "celular": "(33) 98481-0191",
-            "altura": 1.53,
-            "peso": 80,
-            "tipo_sanguineo": "O-"
-        }
-      ]
+- **Body de Exemplo (JSON):**
+
+  ```json
+  [
+    {
+      "nome": "Milena Analu Pires",
+      "cpf": "775.256.099-50",
+      "rg": "44.084.541-5",
+      "data_nasc": "23/05/1964",
+      "sexo": "Feminino",
+      "endereco": "Rua Kurt W. Rothe",
+      "cidade": "Teófilo Otoni",
+      "estado": "MG",
+      "peso": 80,
+      "tipo_sanguineo": "O-"
+    }
+  ]
   ```
 
 - **Exemplo de Resposta (JSON):**
+
   ```json
   {
     "code": 201,
-    "message": "Registered with successfully" 
+    "message": "Registered successfully"
   }
   ```
 
+---
+
+### 4. **Obter Média de Idade por Tipo Sanguíneo**
+
+- **URL:** `/public/api/donor/yearAverage`
+- **Método:** `GET`
+- **Descrição:** Retorna a média de idade para cada tipo sanguíneo.
+- **Exemplo de Resposta (JSON):**
+
+  ```json
+  [
+    { "bloodType": "O-", "averageAge": 40.5 },
+    { "bloodType": "O+", "averageAge": 35.7 }
+  ]
+  ```
+
+---
+
+### 5. **Quantidade de Doadores Acima do Peso**
+
+- **URL:** `/public/api/donor/overweight`
+- **Método:** `GET`
+- **Descrição:** Retorna a quantidade de doadores acima do peso (obesos), separados por gênero.
+- **Exemplo de Resposta (JSON):**
+
+  ```json
+  [
+    { "gender": "Masculino", "total": 50 },
+    { "gender": "Feminino", "total": 70 }
+  ]
+  ```
+
+---
+
+### 6. **IMC Médio por Faixa Etária**
+
+- **URL:** `/public/api/donor/imcByAge`
+- **Método:** `GET`
+- **Descrição:** Retorna o IMC médio por faixa etária em intervalos de 10 anos.
+- **Exemplo de Resposta (JSON):**
+
+  ```json
+  [
+    { "ageRange": "20-30", "averageImc": 24.5 },
+    { "ageRange": "30-40", "averageImc": 26.7 }
+  ]
+  ```
+
+---
+
+### 7. **Buscar Doadores por Estado**
+
+- **URL:** `/public/api/donor/byState`
+- **Método:** `GET`
+- **Descrição:** Retorna os doadores cadastrados baseados no estado informado.
+- **Parâmetro da URL:**
+    - `state`: Sigla do estado (ex.: `SP`, `RJ`).
+
+- **Exemplo de Resposta (JSON):**
+
+  ```json
+  [
+    {
+      "name": "Milena Analu Pires",
+      "birthDate": [1964, 5, 23],
+      "gender": "Feminino",
+      "city": "São Paulo",
+      "state": "SP",
+      "bloodType": "A+"
+    }
+  ]
+  ```
+
+---
+
+## Observações
+
+- Todos os endpoints são **stateless** (sem sessões).
+- Os dados transportados entre cliente e servidor utilizam o formato **JSON**.
+- Baseado em **Spring MVC**, os serviços REST foram projetados para alto desempenho e simplicidade.
+## Observações
+
+- Todos os endpoints são **stateless** (sem sessões).
+- Os dados transportados entre cliente e servidor utilizam o formato **JSON**.
+- O projeto usa o **Spring MVC** para implementação do serviço REST, garantindo alto desempenho e simplicidade para consumir os endpoints.
+ 
 ## Executando o Projeto
 
 ### Pré-requisitos
@@ -163,8 +236,8 @@ A API expõe os seguintes endpoints:
 
 1. Clone este repositório:
    ```bash
-   git clone <https://github.com/GuiParpineli/donors-api.git>
-   cd <donors-api>
+   git clone https://github.com/GuiParpineli/donors-api.git
+   cd donors-api
    ```
 
 2. Conceda permissão para o executável `gradlew` (caso necessário):
