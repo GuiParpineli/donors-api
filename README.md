@@ -25,7 +25,7 @@ de manutenção e escalabilidade.
 
 ## Arquitetura do Projeto
 
-<img src="clean_img.png" alt="Arquitetura do Projeto" width="300" style="display: block; margin: auto;">
+<img src="clean_img.png" alt="Arquitetura do Projeto" style="display: block; margin: auto;">
 
 Este projeto foi desenvolvido utilizando os princípios da **Clean Architecture**, que organiza a aplicação em camadas,
 separando responsabilidades para facilitar o entendimento do código e melhorar a manutenibilidade. Abaixo uma explicação
@@ -218,12 +218,6 @@ A API expõe os seguintes endpoints:
 
 - Todos os endpoints são **stateless** (sem sessões).
 - Os dados transportados entre cliente e servidor utilizam o formato **JSON**.
-- Baseado em **Spring MVC**, os serviços REST foram projetados para alto desempenho e simplicidade.
-## Observações
-
-- Todos os endpoints são **stateless** (sem sessões).
-- Os dados transportados entre cliente e servidor utilizam o formato **JSON**.
-- O projeto usa o **Spring MVC** para implementação do serviço REST, garantindo alto desempenho e simplicidade para consumir os endpoints.
  
 ## Executando o Projeto
 
