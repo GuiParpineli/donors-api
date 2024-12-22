@@ -1,4 +1,4 @@
-package br.com.donor.donorsapi.domain.service.donor.imc;
+package br.com.donor.donorsapi.domain.service.donor.bmi;
 
 import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 

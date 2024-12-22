@@ -7,12 +7,14 @@ import br.com.donor.donorsapi.domain.model.BloodTypeRecipientCount;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import br.com.donor.donorsapi.web.controller.donor.dto.BloodTypeRecipientCountDto;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @DonorController
+@Tag(name = "Quantidade de possiveis doadores")
 public class DonorBloodRecipientController {
 
     private final DonorAdapterRecipientService donorService;

@@ -1,10 +1,10 @@
-package br.com.donor.donorsapi.adapters.service.donor.imc;
+package br.com.donor.donorsapi.adapters.service.donor.bmi;
 
 import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
 
 import java.util.List;
 
-public interface DonorAdapterImcService {
+public interface DonorAdapterBmiService {
 
     List<AgeImcData> findAllAgeAndImc();
 }
