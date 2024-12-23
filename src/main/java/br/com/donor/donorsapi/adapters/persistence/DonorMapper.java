@@ -96,9 +96,9 @@ public class DonorMapper {
 
     public static DonorOverweightDto toOverweightDto(DonorOverWeight dto) {
         return new DonorOverweightDto(
-                dto.getSexo(),
+                dto.getGender(),
                 dto.getTotal(),
-                dto.getPorcent() + "%"
+                dto.getPercent() + "%"
         );
     }
 

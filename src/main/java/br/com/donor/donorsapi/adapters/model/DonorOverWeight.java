@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class DonorOverWeight {
-    private String sexo;
+    private String gender;
     private int total;
-    private double porcent;
+    private double percent;
 }
