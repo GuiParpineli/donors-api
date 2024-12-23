@@ -37,11 +37,7 @@ public class DonorOverWeightServiceImpl implements DonorOverWeightService {
                 ? 0
                 : (double) (filteredDonors.size() * overWeightTotal) / 100;
 
-        return new DonorOverWeight(
-                gender.getGender(),
-                filteredDonors.size(),
-                percent
-        );
+        return new DonorOverWeight(gender.getGender(), filteredDonors.size(), percent);
     }
 
     private boolean isOverWeight(Donor donor) {

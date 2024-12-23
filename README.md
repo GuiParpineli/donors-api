@@ -63,6 +63,27 @@ A API expõe os seguintes endpoints:
 
 ## Endpoints Disponíveis
 
+### 0. **Login**
+
+- **URL:** `/public/api/auth/login`
+- **Método:** `POST`
+- **Descrição:** Autentica usuário e retorna JWT.
+- **Body a usar(JSON) (Único usuário cadastrado):**
+  ```json
+    {
+      "username": "admin",
+      "password": "12345678"
+    }
+  ```
+
+- **Exemplo de Resposta (JSON):**
+  ```json
+   {
+    "accessToken": "eyGciOiJIUzI1NiJ9",
+    "expireIn": 36000
+   }
+  ```
+
 ### 1. **Buscar Compatibilidade por Tipo Sanguíneo**
 
 - **URL:** `/public/api/blood-types/compatibility`
@@ -218,7 +239,7 @@ A API expõe os seguintes endpoints:
 
 - Todos os endpoints são **stateless** (sem sessões).
 - Os dados transportados entre cliente e servidor utilizam o formato **JSON**.
- 
+
 ## Executando o Projeto
 
 ### Pré-requisitos

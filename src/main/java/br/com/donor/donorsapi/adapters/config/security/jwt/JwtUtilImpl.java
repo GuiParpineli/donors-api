@@ -2,6 +2,8 @@ package br.com.donor.donorsapi.adapters.config.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,10 +15,10 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtUtilImpl implements JwtUtil {
-    private static final String QUARKBYTE = "quarkbyte";
     @Getter
-    public static final int EXPIRATION_TIME = 36000;
-    SecretKey key = Jwts.SIG.HS256.key().build();
+    public static final int EXPIRATION_TIME = 24 * 60 * 60 * 1000;
+
+    private final SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode("m4Kx7/NyL3aF9qzBX5R8vPtGQkl1MZcWiUBM2v4qGzE="));
 
     @Override
     public String extractUserName(String token) {
@@ -56,21 +58,21 @@ public class JwtUtilImpl implements JwtUtil {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .verifyWith(key)
+                .setSigningKey(key)
                 .build()
-                .parseEncryptedClaims(token).getPayload();
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private String createToken(String claims, String subject) {
         return Jwts.builder()
-                .issuer(QUARKBYTE)
                 .claim("role", claims)
-                .subject(subject)
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(key).compact();
+                .setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(key)
+                .compact();
     }
-
 
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());

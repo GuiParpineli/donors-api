@@ -3,6 +3,7 @@ package br.com.donor.donorsapi.web.controller.auth;
 import br.com.donor.donorsapi.adapters.config.security.jwt.JwtUtil;
 import br.com.donor.donorsapi.web.controller.auth.dto.TokenDto;
 import br.com.donor.donorsapi.web.controller.auth.dto.UserDto;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Login", description = "Gera um JWT para autenticação", security = {})
     public ResponseEntity<?> login(@RequestBody UserDto userApp) {
         UserDetails userDetails = service.loadUserByUsername(userApp.username());
         authenticationManager.authenticate(

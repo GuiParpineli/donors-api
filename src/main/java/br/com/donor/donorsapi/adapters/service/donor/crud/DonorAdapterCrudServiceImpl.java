@@ -1,6 +1,7 @@
 package br.com.donor.donorsapi.adapters.service.donor.crud;
 
 import br.com.donor.donorsapi.adapters.persistence.repository.DonorRepositoryImpl;
+import br.com.donor.donorsapi.domain.model.DefaultResponse;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.service.donor.crud.DonorCrudCrudServiceImpl;
 import br.com.donor.donorsapi.domain.service.donor.crud.DonorCrudService;
@@ -17,7 +18,7 @@ public class DonorAdapterCrudServiceImpl implements DonorAdapterCrudService {
     }
 
     @Override
-    public boolean saveAll(List<Donor> donors) {
+    public DefaultResponse saveAll(List<Donor> donors) {
         return donorCrudService.saveAll(donors);
     }
 
