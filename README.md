@@ -216,31 +216,6 @@ A API expõe os seguintes endpoints:
 
 ---
 
-### 7. **Buscar Doadores por Estado**
-
-- **URL:** `/api/donor/byState`
-- **Método:** `GET`
-- **Descrição:** Retorna os doadores cadastrados baseados no estado informado.
-- **Parâmetro da URL:**
-    - `state`: Sigla do estado (ex.: `SP`, `RJ`).
-
-- **Exemplo de Resposta (JSON):**
-
-  ```json
-  [
-    {
-      "name": "Milena Analu Pires",
-      "birthDate": [1964, 5, 23],
-      "gender": "Feminino",
-      "city": "São Paulo",
-      "state": "SP",
-      "bloodType": "A+"
-    }
-  ]
-  ```
-
----
-
 ## Observações
 
 - Todos os endpoints são **stateless** (sem sessões).
