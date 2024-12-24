@@ -290,16 +290,6 @@ Se desejar fazer conexões independentes com o banco de dados, certifique-se de 
 
 ---
 
-### Testando o Código
-
-Para rodar todos os testes automatizados (se existentes), use:
-
-```bash
-./gradlew test
-```
-
----
-
 ### Estrutura de Pacotes
 
 Abaixo está um breve resumo da organização dos pacotes do projeto seguindo o modelo de Clean Architecture:
