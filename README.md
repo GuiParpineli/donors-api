@@ -33,21 +33,27 @@ das principais camadas:
 
 ### Camadas Principais
 
-1. **Entities (Domínio):**
+1. **Model (Domínio):**
     - Contém as regras de negócio e entidades fundamentais. Essa camada é independente de qualquer framework ou
       tecnologia.
 
-2. **Use Cases:**
+2. **Service (Domínio):**
     - Implementa os casos de uso específicos do projeto. Aqui é onde a lógica do que a aplicação deve fazer é
       implementada.
+      
+3. **Repository (Domínio):**
+    - Implementa a logica de banco de dados independente de framework e banco(MYSQL, MONGODB, etc).
 
-3. **Interface Adapters:**
+4. **Adapters:**
     - Faz a conversão de dados entre as camadas de domínio e as interfaces primárias (controllers, gateways). Por
       exemplo, transformar inputs HTTP em objetos de negócio.
 
-4. **Infraestrutura:**
+5. **Infrastructure:**
     - Contém as implementações de frameworks e serviços externos, como o repositório do banco de dados utilizando Spring
       Data JPA.
+      
+6. **Web:**
+    - Controllers do projeto.
 
 ---
 
@@ -86,7 +92,7 @@ A API expõe os seguintes endpoints:
 
 ### 1. **Buscar Compatibilidade por Tipo Sanguíneo**
 
-- **URL:** `/public/api/blood-types/compatibility`
+- **URL:** `/api/blood-types/compatibility`
 - **Método:** `GET`
 - **Descrição:** Retorna a quantidade de possíveis doadores por tipo de sangue.
 - **Exemplo de Resposta (JSON):**
@@ -104,7 +110,7 @@ A API expõe os seguintes endpoints:
 
 ### 2. **Listar Todos os Doadores**
 
-- **URL:** `/public/api/donor/all`
+- **URL:** `/api/donor/all`
 - **Método:** `GET`
 - **Descrição:** Retorna todos os doadores registrados no sistema.
 - **Exemplo de Resposta (JSON):**
@@ -129,7 +135,7 @@ A API expõe os seguintes endpoints:
 
 ### 3. **Cadastrar Novo Doador**
 
-- **URL:** `/public/api/donor/save`
+- **URL:** `/api/donor/save`
 - **Método:** `POST`
 - **Descrição:** Cadastra um novo doador no sistema.
 - **Body de Exemplo (JSON):**
@@ -164,7 +170,7 @@ A API expõe os seguintes endpoints:
 
 ### 4. **Obter Média de Idade por Tipo Sanguíneo**
 
-- **URL:** `/public/api/donor/yearAverage`
+- **URL:** `/api/donor/yearAverage`
 - **Método:** `GET`
 - **Descrição:** Retorna a média de idade para cada tipo sanguíneo.
 - **Exemplo de Resposta (JSON):**
@@ -180,7 +186,7 @@ A API expõe os seguintes endpoints:
 
 ### 5. **Quantidade de Doadores Acima do Peso**
 
-- **URL:** `/public/api/donor/overweight`
+- **URL:** `/api/donor/overweight`
 - **Método:** `GET`
 - **Descrição:** Retorna a quantidade de doadores acima do peso (obesos), separados por gênero.
 - **Exemplo de Resposta (JSON):**
@@ -196,7 +202,7 @@ A API expõe os seguintes endpoints:
 
 ### 6. **IMC Médio por Faixa Etária**
 
-- **URL:** `/public/api/donor/imcByAge`
+- **URL:** `/api/donor/imcByAge`
 - **Método:** `GET`
 - **Descrição:** Retorna o IMC médio por faixa etária em intervalos de 10 anos.
 - **Exemplo de Resposta (JSON):**
@@ -212,7 +218,7 @@ A API expõe os seguintes endpoints:
 
 ### 7. **Buscar Doadores por Estado**
 
-- **URL:** `/public/api/donor/byState`
+- **URL:** `/api/donor/byState`
 - **Método:** `GET`
 - **Descrição:** Retorna os doadores cadastrados baseados no estado informado.
 - **Parâmetro da URL:**
@@ -287,19 +293,5 @@ O Docker Compose está configurado no projeto para subir um contêiner MySQL com
 - **Senha:** `verysecret`
 
 Se desejar fazer conexões independentes com o banco de dados, certifique-se de que o Docker esteja em execução.
-
----
-
-### Estrutura de Pacotes
-
-Abaixo está um breve resumo da organização dos pacotes do projeto seguindo o modelo de Clean Architecture:
-
-```plaintext
-src/
-├── domain/          # Regras de negócio e entidades
-├── usecases/        # Casos de uso específicos
-├── adapters/        # Adaptadores de interface (controladores, gateways)
-├── infrastructure/  # Configurações e implementação de frameworks
-```
 
 ---
