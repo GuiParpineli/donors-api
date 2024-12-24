@@ -1,9 +1,9 @@
 package br.com.donor.donorsapi.web.controller.donor.bloodrecipient;
 
 
-import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
-import br.com.donor.donorsapi.adapters.service.donor.recipient.DonorAdapterRecipientService;
+import br.com.donor.donorsapi.adapters.mapper.DonorMapper;
 import br.com.donor.donorsapi.domain.model.BloodTypeRecipientCount;
+import br.com.donor.donorsapi.infrastructure.service.donor.recipient.DonorAdapterRecipientService;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import br.com.donor.donorsapi.web.controller.donor.dto.BloodTypeRecipientCountDto;
 import io.swagger.v3.oas.annotations.Operation;

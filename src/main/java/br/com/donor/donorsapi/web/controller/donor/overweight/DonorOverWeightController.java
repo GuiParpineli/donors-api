@@ -1,8 +1,8 @@
 package br.com.donor.donorsapi.web.controller.donor.overweight;
 
-import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
-import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
-import br.com.donor.donorsapi.adapters.service.donor.overweight.DonorAdapterOverWeightService;
+import br.com.donor.donorsapi.adapters.mapper.DonorMapper;
+import br.com.donor.donorsapi.adapters.mapper.DonorOverWeight;
+import br.com.donor.donorsapi.infrastructure.service.donor.overweight.DonorAdapterOverWeightService;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorOverweightDto;
 import io.swagger.v3.oas.annotations.Operation;

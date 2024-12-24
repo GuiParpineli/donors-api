@@ -1,9 +1,9 @@
 package br.com.donor.donorsapi.web.controller.donor.crud;
 
-import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
-import br.com.donor.donorsapi.adapters.service.donor.crud.DonorAdapterCrudService;
+import br.com.donor.donorsapi.adapters.mapper.DonorMapper;
 import br.com.donor.donorsapi.domain.model.DefaultResponse;
 import br.com.donor.donorsapi.domain.model.Donor;
+import br.com.donor.donorsapi.infrastructure.service.donor.crud.DonorAdapterCrudService;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorDto;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorInputDto;

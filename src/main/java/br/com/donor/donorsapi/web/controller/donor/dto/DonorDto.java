@@ -1,6 +1,6 @@
 package br.com.donor.donorsapi.web.controller.donor.dto;
 
-import br.com.donor.donorsapi.adapters.persistence.entity.DonorEntity;
+import br.com.donor.donorsapi.infrastructure.persistence.entity.DonorEntity;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
