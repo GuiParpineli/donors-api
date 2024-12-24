@@ -1,8 +1,8 @@
 package br.com.donor.donorsapi.web.controller.donor.yearaverage;
 
-import br.com.donor.donorsapi.adapters.persistence.DonorMapper;
-import br.com.donor.donorsapi.adapters.service.donor.yearaverage.DonorYearAverageService;
+import br.com.donor.donorsapi.adapters.mapper.DonorMapper;
 import br.com.donor.donorsapi.domain.model.DonorYearAverage;
+import br.com.donor.donorsapi.infrastructure.service.donor.yearaverage.DonorYearAverageService;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import br.com.donor.donorsapi.web.controller.donor.dto.DonorYearAverageDto;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,6 +1,6 @@
 package br.com.donor.donorsapi.domain.service.donor.overweight;
 
-import br.com.donor.donorsapi.adapters.model.DonorOverWeight;
+import br.com.donor.donorsapi.adapters.mapper.DonorOverWeight;
 import br.com.donor.donorsapi.domain.model.Donor;
 import br.com.donor.donorsapi.domain.model.Gender;
 import br.com.donor.donorsapi.domain.repository.DonorRepository;

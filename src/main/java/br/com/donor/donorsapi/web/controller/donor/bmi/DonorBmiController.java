@@ -1,7 +1,7 @@
 package br.com.donor.donorsapi.web.controller.donor.bmi;
 
-import br.com.donor.donorsapi.adapters.persistence.entity.AgeImcData;
-import br.com.donor.donorsapi.adapters.service.donor.bmi.DonorAdapterBmiService;
+import br.com.donor.donorsapi.infrastructure.model.AgeImcData;
+import br.com.donor.donorsapi.infrastructure.service.donor.bmi.DonorAdapterBmiService;
 import br.com.donor.donorsapi.web.controller.donor.DonorController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
