@@ -19,7 +19,7 @@ de manutenção e escalabilidade.
 - **Docker Compose Support (Spring):** Utilizado para integração simplificada entre o serviço e o banco de dados,
   eliminando a necessidade de configurações manuais complexas.
 - **MySQL:** Banco de dados relacional utilizado no backend.
-- **Gradle (com Gradlew):** Ferramenta de automação de build que simplifica a compilação, teste e execução do projeto.
+- **Gradle:** Ferramenta de automação de build que simplifica a compilação, teste e execução do projeto.
 
 ---
 
@@ -42,7 +42,7 @@ das principais camadas:
       implementada.
       
 3. **Repository (Domínio):**
-    - Implementa a logica de banco de dados independente de framework e banco(MYSQL, MONGODB, etc).
+    - Implementa a lógica de banco de dados independente de framework e banco(MYSQL, MONGODB, etc).
 
 4. **Adapters:**
     - Faz a conversão de dados entre as camadas de domínio e as interfaces primárias (controllers, gateways). Por
